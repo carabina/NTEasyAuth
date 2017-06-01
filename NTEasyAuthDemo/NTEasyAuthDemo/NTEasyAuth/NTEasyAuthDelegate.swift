@@ -9,6 +9,7 @@
 import Foundation
 
 @objc public protocol NTEasyAuthDelegate: class {
+    
     func touchIDAuthSuccess()
     func touchIDAuthFail()
     @objc optional func touchIDAuthCancel()

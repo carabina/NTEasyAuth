@@ -12,7 +12,10 @@ import LocalAuthentication
 private let context = LAContext()
 
 open class NTEasyAuth {
-    private init() {}
+    
+    lazy var passcode = NTEasyAuthPasscode()
+    private init() {
+    }
     
     open static let shared = NTEasyAuth()
     open weak var delegate: NTEasyAuthDelegate?
@@ -21,11 +24,11 @@ open class NTEasyAuth {
     }
     
     open func touchIDAuth(message: String, fallbackTitle: String) {
-        context.localizedFallbackTitle = fallbackTitle
 
         guard isTouchIDAllowed else {
             return
         }
+        context.localizedFallbackTitle = fallbackTitle
         context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: message, reply: { (isSuccess, error) in
             self.handleTouchIDResult(isSuccess, error)
         })
@@ -42,12 +45,11 @@ open class NTEasyAuth {
                 case kLAErrorSystemCancel:
                     self.delegate?.touchIDAuthCancel?()
                 case kLAErrorUserFallback:
-                    // 用户想去输入密码
                     if (self.delegate?.touchIDAuthFallback?() == nil) {
                         // 如果没在代理中使用这个方法 就用我自己的 代码
                     }
                 case kLAErrorAuthenticationFailed:
-                    print("验证指纹失败")
+                    self.delegate?.touchIDAuthFail()
                 default:
                     break;
                 }

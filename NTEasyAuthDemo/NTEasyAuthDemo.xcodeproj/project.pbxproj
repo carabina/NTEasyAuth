@@ -15,6 +15,7 @@
 		9FEDDD4B1EDFF44F005CA012 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FEDDD4A1EDFF44F005CA012 /* LocalAuthentication.framework */; };
 		9FEDDD4D1EDFF466005CA012 /* NTEasyAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDD4C1EDFF466005CA012 /* NTEasyAuth.swift */; };
 		9FEDDD4F1EDFFA5A005CA012 /* NTEasyAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDD4E1EDFFA5A005CA012 /* NTEasyAuthDelegate.swift */; };
+		9FEDDD511EE0163F005CA012 /* NTEasyAuthPasscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDD501EE0163F005CA012 /* NTEasyAuthPasscode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9FEDDD4A1EDFF44F005CA012 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		9FEDDD4C1EDFF466005CA012 /* NTEasyAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTEasyAuth.swift; sourceTree = "<group>"; };
 		9FEDDD4E1EDFFA5A005CA012 /* NTEasyAuthDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTEasyAuthDelegate.swift; sourceTree = "<group>"; };
+		9FEDDD501EE0163F005CA012 /* NTEasyAuthPasscode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTEasyAuthPasscode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				9FEDDD4A1EDFF44F005CA012 /* LocalAuthentication.framework */,
 				9FEDDD4C1EDFF466005CA012 /* NTEasyAuth.swift */,
+				9FEDDD501EE0163F005CA012 /* NTEasyAuthPasscode.swift */,
 				9FEDDD4E1EDFFA5A005CA012 /* NTEasyAuthDelegate.swift */,
 			);
 			path = NTEasyAuth;
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FEDDD4F1EDFFA5A005CA012 /* NTEasyAuthDelegate.swift in Sources */,
+				9FEDDD511EE0163F005CA012 /* NTEasyAuthPasscode.swift in Sources */,
 				9FEDDD4D1EDFF466005CA012 /* NTEasyAuth.swift in Sources */,
 				9FEDDD391EDFF3BD005CA012 /* ViewController.swift in Sources */,
 				9FEDDD371EDFF3BD005CA012 /* AppDelegate.swift in Sources */,

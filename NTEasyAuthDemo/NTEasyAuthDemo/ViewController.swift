@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var noticeLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print(NTEasyAuth.shared.isTouchIDAllowed)
@@ -20,18 +22,26 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    @IBAction func auth() {
+        NTEasyAuth.shared.touchIDAuth(message: "快把你的小爪子放在伦家的按钮上嘛~", fallbackTitle: "我不愿意了啦~")
+    }
 }
 extension ViewController: NTEasyAuthDelegate {
     func touchIDAuthSuccess() {
-        print("touchID 验证成功")
+        noticeLabel.text = "TouchID 验证成功"
     }
     func touchIDAuthFail() {
-        print("touchID 验证失败")
+        noticeLabel.text = "TouchID 验证失败"
     }
     func touchIDAuthFallback() {
-        print("touchID 想去输入密码")
+        noticeLabel.text = "touchID 想去输入密码"
     }
     func touchIDAuthCancel() {
-        print("touchID 验证被取消")
+        noticeLabel.text = "touchID 验证被取消"
+    }
+}
+extension ViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        <#code#>
     }
 }
