@@ -14,14 +14,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(NTEasyAuth.shared.isTouchIDAllowed)
+        
+        print(NTEasyAuth.shared.isTouchIDEnabled)
         NTEasyAuth.shared.delegate = self
         NTEasyAuth.shared.touchIDAuth(message: "快把你的小爪子放在伦家的按钮上嘛~", fallbackTitle: "我不愿意了啦~")
+        NTEasyAuth.shared.isEnabledAuth = true
+        NTEasyAuth.shared.passcode.passcode = "3333"
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     @IBAction func auth() {
         NTEasyAuth.shared.touchIDAuth(message: "快把你的小爪子放在伦家的按钮上嘛~", fallbackTitle: "我不愿意了啦~")
     }
@@ -34,14 +35,28 @@ extension ViewController: NTEasyAuthDelegate {
         noticeLabel.text = "TouchID 验证失败"
     }
     func touchIDAuthFallback() {
-        noticeLabel.text = "touchID 想去输入密码"
+        noticeLabel.text = "TouchID 想去输入密码"
+        let alert = UIAlertController(title: "输入密码", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "密码"
+            textField.isSecureTextEntry = true
+        }
+        let action = UIAlertAction(title: "确定", style: .default) { (_) in
+            if (alert.textFields?[0].text == NTEasyAuth.shared.passcode.passcode) {
+                self.noticeLabel.text = "密码正确"
+            } else {
+                self.noticeLabel.text = "密码错误"
+            }
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     func touchIDAuthCancel() {
-        noticeLabel.text = "touchID 验证被取消"
+        noticeLabel.text = "TouchID 验证被取消"
     }
-}
-extension ViewController {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        <#code#>
+    func touchIDAuthLockout() {
+        noticeLabel.text = "TouchID 被锁定了"
     }
 }

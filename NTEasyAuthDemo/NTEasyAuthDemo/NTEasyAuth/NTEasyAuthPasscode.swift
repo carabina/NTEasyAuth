@@ -14,13 +14,17 @@ class NTEasyAuthPasscode {
     var passcode: String?
     
     init() {
-        
+        passcode = UserDefaults.standard.string(forKey: "passcode")
+        hasPasscode = passcode != nil
     }
-    func deletePasscode() {
-        
+    open func deletePasscode() {
+        UserDefaults.standard.removeObject(forKey: "passcode")
     }
-    func savePasscode(_ passcode: String) {
-        
+    /// 保存密码
+    ///
+    /// - Parameter passcode: 密码字符串
+    open func savePasscode(_ passcode: String) {
+        UserDefaults.standard.set(passcode, forKey: "passcode")
     }
     
 }

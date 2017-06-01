@@ -12,6 +12,7 @@ import Foundation
     
     func touchIDAuthSuccess()
     func touchIDAuthFail()
+    @objc optional func touchIDAuthLockout()
     @objc optional func touchIDAuthCancel()
     @objc optional func touchIDAuthFallback()
 }

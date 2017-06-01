@@ -14,18 +14,30 @@ private let context = LAContext()
 open class NTEasyAuth {
     
     lazy var passcode = NTEasyAuthPasscode()
+    /// 是否开启 指纹认证 默认为 false
+    open var isEnabledAuth: Bool = false {
+        didSet {
+            UserDefaults.standard.set(isEnabledAuth, forKey: "isEnabledAuth")
+        }
+    }
     private init() {
+        isEnabledAuth = UserDefaults.standard.bool(forKey: "isEnabledAuth")
     }
     
     open static let shared = NTEasyAuth()
     open weak var delegate: NTEasyAuthDelegate?
-    open var isTouchIDAllowed: Bool {
-        return isTouchIDEnabled()
+    /// TouchID 是否可用
+    open var isTouchIDEnabled: Bool {
+        return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
     }
     
-    open func touchIDAuth(message: String, fallbackTitle: String) {
-
-        guard isTouchIDAllowed else {
+    /// TouchID验证
+    ///
+    /// - Parameters:
+    ///   - message: 提示信息
+    ///   - fallbackTitle: fallback 提示
+    open func touchIDAuth(message: String, fallbackTitle: String?) {
+        guard isTouchIDEnabled && isEnabledAuth else {
             return
         }
         context.localizedFallbackTitle = fallbackTitle
@@ -33,7 +45,6 @@ open class NTEasyAuth {
             self.handleTouchIDResult(isSuccess, error)
         })
     }
-    
     fileprivate func handleTouchIDResult(_ success: Bool, _ error: Error?) {
         DispatchQueue.main.async {
             if success {
@@ -45,20 +56,15 @@ open class NTEasyAuth {
                 case kLAErrorSystemCancel:
                     self.delegate?.touchIDAuthCancel?()
                 case kLAErrorUserFallback:
-                    if (self.delegate?.touchIDAuthFallback?() == nil) {
-                        // 如果没在代理中使用这个方法 就用我自己的 代码
-                    }
+                    self.delegate?.touchIDAuthFallback?()
                 case kLAErrorAuthenticationFailed:
                     self.delegate?.touchIDAuthFail()
+                case kLAErrorTouchIDLockout:
+                    self.delegate?.touchIDAuthFallback?()
                 default:
                     break;
                 }
             }
         }
-    }
-}
-extension NTEasyAuth {
-    fileprivate func isTouchIDEnabled() -> Bool {
-        return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
     }
 }
