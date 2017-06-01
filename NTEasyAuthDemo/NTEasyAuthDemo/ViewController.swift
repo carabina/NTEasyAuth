@@ -12,12 +12,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        print(NTEasyAuth.shared.isTouchIDAllowed)
+        NTEasyAuth.shared.touchIDAuth(message: "快把你的小爪子放在伦家的按钮上嘛~", fallbackTitle: "我不愿意了啦~")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 

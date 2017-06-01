@@ -12,6 +12,8 @@
 		9FEDDD3C1EDFF3BD005CA012 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FEDDD3A1EDFF3BD005CA012 /* Main.storyboard */; };
 		9FEDDD3E1EDFF3BD005CA012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FEDDD3D1EDFF3BD005CA012 /* Assets.xcassets */; };
 		9FEDDD411EDFF3BD005CA012 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FEDDD3F1EDFF3BD005CA012 /* LaunchScreen.storyboard */; };
+		9FEDDD4B1EDFF44F005CA012 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FEDDD4A1EDFF44F005CA012 /* LocalAuthentication.framework */; };
+		9FEDDD4D1EDFF466005CA012 /* NTEasyAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEDDD4C1EDFF466005CA012 /* NTEasyAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		9FEDDD3D1EDFF3BD005CA012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FEDDD401EDFF3BD005CA012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FEDDD421EDFF3BD005CA012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FEDDD4A1EDFF44F005CA012 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		9FEDDD4C1EDFF466005CA012 /* NTEasyAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTEasyAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FEDDD4B1EDFF44F005CA012 /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +73,8 @@
 		9FEDDD481EDFF3E1005CA012 /* NTEasyAuth */ = {
 			isa = PBXGroup;
 			children = (
+				9FEDDD4A1EDFF44F005CA012 /* LocalAuthentication.framework */,
+				9FEDDD4C1EDFF466005CA012 /* NTEasyAuth.swift */,
 			);
 			path = NTEasyAuth;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FEDDD4D1EDFF466005CA012 /* NTEasyAuth.swift in Sources */,
 				9FEDDD391EDFF3BD005CA012 /* ViewController.swift in Sources */,
 				9FEDDD371EDFF3BD005CA012 /* AppDelegate.swift in Sources */,
 			);
@@ -271,6 +279,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 26K4QZ9DA7;
 				INFOPLIST_FILE = NTEasyAuthDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuerer.NTEasyAuthDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -284,6 +293,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 26K4QZ9DA7;
 				INFOPLIST_FILE = NTEasyAuthDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuerer.NTEasyAuthDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
